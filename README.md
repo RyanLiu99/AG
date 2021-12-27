@@ -3,6 +3,7 @@ This will run on Linux Docker.
  
 This code uses the image of SQL Server docker to setup Availability Group Read-Scale in Clusterless architecture.  It does not support fail over or DR.
  
+This version is not working, seems have problem to restore backup db maybe I am not using same password.  
 ### How to Use
  
 1. Run the following command in this directory:
@@ -34,7 +35,7 @@ There is an Avaialbility Group Listener runs on db1 on port 1540, mapped to host
 ### Testing
 Please wait until DB instance is full up. Check log in contailer for the status. 
 
-From the host, you can connect to each instance directly by specifying the Server name as "localhost,1x35". To connect to port 1635 or 1735, with database as DEVDB, you must also supply Addintional Connection Parameter ***'ApplicationIntent=ReadOnly'***, otherwise it will fail with message:
+From the host, you can connect to each instance directly by specifying the Server name as "localhost,1x35" with sa passowrd found in docker-compose.yml;.  ag_login should also works. To connect to port 1635 or 1735, with database as DEVDB, you must also supply Addintional Connection Parameter ***'ApplicationIntent=ReadOnly'***, otherwise it will fail with message:
 ```
 The target database ('DEVDB') is in an availability group and is currently accessible for connections when the application intent is set to read only.
 ```
